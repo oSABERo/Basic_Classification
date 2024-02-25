@@ -3,12 +3,10 @@ import pandas as pd
 # Read the data
 df = pd.read_csv("breast_cancer.csv")
 
-x = df.iloc[:, 2:].values # df[['a', 'b', ...]]
+x = df.iloc[:, 2:-1] # df[['a', 'b', ...]]
 
-y = df.iloc[:, 1].values
-map_rule = {'M': 0, 'B': 1}
-y = y.map(map_rule)
-
+# Map 'M' to 0 and 'B' to 1 in the second column of the DataFrame
+y = df.iloc[:, 1].map({'M': 0, 'B': 1})
 
 # Train and Test
 from sklearn.model_selection import train_test_split
